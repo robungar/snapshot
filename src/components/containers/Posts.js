@@ -50,7 +50,7 @@ class Posts extends Component {
 					{ (list == null) ? null :
 						list.map((post, i) => {
 							return (
-								<li key={post.id}>{post.caption}</li>
+								<li key={post.id}><img src={post.image}/> {post.caption} uploaded by {post.profile.username}</li>
 							)
 						})
 					 }

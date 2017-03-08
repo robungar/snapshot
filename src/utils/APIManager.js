@@ -49,26 +49,25 @@ export default {
 
 	uploadFile: (url, file, params) => {
 		return new Promise((resolve, reject) => {
+      let uploadRequest = superagent.post(url)
+      uploadRequest.attach('file', file)
 
-	        let uploadRequest = superagent.post(url)
-	        uploadRequest.attach('file', file)
+      if (params != null){
+        Object.keys(params).forEach((key) => {
+	        uploadRequest.field(key, params[key])
+        })
+      }
 
-	        if (params != null){
-		        Object.keys(params).forEach((key) => {
-			        uploadRequest.field(key, params[key])
-		        })
-	        }
-
-	        uploadRequest.end((err, resp) => {
-	        	if (err){
+      uploadRequest.end((err, resp) => {
+      	if (err){
 					reject(err)
-	              	return
-	        	}
+           return
+      	}
 
-	        	const uploaded = resp.body
-	        	console.log('UPLOAD COMPLETE: '+JSON.stringify(uploaded))
-	        	resolve(uploaded)
-	        })
+      	const uploaded = resp.body
+      	console.log('UPLOAD COMPLETE: '+JSON.stringify(uploaded))
+      	resolve(uploaded)
+      })
 		})
 	}
 }

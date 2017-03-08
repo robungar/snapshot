@@ -46,17 +46,17 @@ class CreatePost extends Component {
 		console.log('imageSelected: ')
 		const image = files[0]
 
-		const cloudName = 'dcxaoww0c'
+		const cloudName = 'hyhzidsae'
 		const url = 'https://api.cloudinary.com/v1_1/'+cloudName+'/image/upload'
 
 		const timestamp = Date.now()/1000
-		const uploadPreset = 'rnxsz09i'
+		const uploadPreset = 'qxk3ev6b'
 
 		const paramsStr = 'timestamp='+timestamp+'&upload_preset='+uploadPreset+'rVxIqxqsbdcxTo4X6bo9rUqkQms'
 
 		const signature = sha1(paramsStr)
 		const params = {
-			'api_key': '399938195648612',
+			'api_key': '8675309ADF',
 			'timestamp': timestamp,
 			'upload_preset': uploadPreset,
 			'signature': signature
@@ -84,13 +84,24 @@ class CreatePost extends Component {
 
 	render(){
 		return (
-			<div>
-				Create Post
-				<Dropzone onDrop={this.imageSelected.bind(this)} style={{border:'none'}}>
-					<button className="button special small">Upload Image</button>
-				</Dropzone>
-				<input id="caption" onChange={this.updatePost.bind(this)} type="text" placeholder="Caption" style={{margin:"20"}} />
-				<button className="button special small" onClick={this.submitPost.bind(this)}>Submit</button>
+			<div style={{background:'#fff'}}>
+				<h2>Submit Post</h2>
+				<input id="caption" onChange={this.updatePost.bind(this)} type="text" placeholder="Caption" />
+				<div className="row">
+					<div className="3u 12u$(small)">
+						<Dropzone onDrop={this.imageSelected.bind(this)} style={{border:'none', marginTop:12}}>
+							<button className="button special small">Add Image</button>
+						</Dropzone>					
+					</div>
+					<div className="3u 12u$(small)">
+						<button className="button special small" style={{marginTop:12, marginLeft:12, width:90+'%'}} onClick={this.submitPost.bind(this)}>Submit</button>
+					</div>
+					<div className="6u 12u$(small)">
+						<img style={{width:120, float:'right', marginTop:12}} src={this.state.post.image} />
+					</div>
+				</div>
+
+				<br /><br /><hr />
 			</div>
 		)
 	}

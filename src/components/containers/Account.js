@@ -22,7 +22,6 @@ class Account extends Component {
 
 		return (
 			<div>
-				Account Container
 				{ (currentUser == null) ? <Register onRegister={this.register.bind(this)} onLogin={this.login.bind(this)} /> : 
 					<h2>{currentUser.username}</h2> 
 				}
