@@ -32040,11 +32040,11 @@
 				var timestamp = Date.now() / 1000;
 				var uploadPreset = 'qxk3ev6b';
 	
-				var paramsStr = 'timestamp=' + timestamp + '&upload_preset=' + uploadPreset + 'rVxIqxqsbdcxTo4X6bo9rUqkQms';
+				var paramsStr = 'timestamp=' + timestamp + '&upload_preset=' + uploadPreset + '1lQFyZw-W0CWqPM7m3JBsZ8Yd-k';
 	
 				var signature = (0, _sha2.default)(paramsStr);
 				var params = {
-					'api_key': '8675309ADF',
+					'api_key': '867646185759718',
 					'timestamp': timestamp,
 					'upload_preset': uploadPreset,
 					'signature': signature
