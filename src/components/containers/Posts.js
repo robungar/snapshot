@@ -42,7 +42,7 @@ class Posts extends Component {
 
 	render(){
 		const list = this.props.posts.list // can be null
-
+		
 		return (
 			<div>
 				<CreatePost onCreate={this.submitPost.bind(this)} />

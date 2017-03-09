@@ -35,6 +35,20 @@ export default {
 		}
 	},	
 
+	logout: () =>{
+		return(dispatch) => {
+			APIManager.get('/account/logout', null)
+			.then(response => {
+				dispatch({
+					type: constants.CURRENT_USER_RECEIVED,
+					user: response.user
+				})
+			})
+			.catch((err) => {
+				console.log('ERROR: '+err)
+			})
+		}
+	},
 	checkCurrentUser: () => {
 		return (dispatch) => {
 			APIManager

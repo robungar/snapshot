@@ -31830,6 +31830,18 @@
 			};
 		},
 	
+		logout: function logout() {
+			return function (dispatch) {
+				_utils.APIManager.get('/account/logout', null).then(function (response) {
+					dispatch({
+						type: _constants2.default.CURRENT_USER_RECEIVED,
+						user: response.user
+					});
+				}).catch(function (err) {
+					console.log('ERROR: ' + err);
+				});
+			};
+		},
 		checkCurrentUser: function checkCurrentUser() {
 			return function (dispatch) {
 				_utils.APIManager.get('/account/currentuser', null).then(function (response) {
@@ -39657,6 +39669,11 @@
 				this.props.login(credentials);
 			}
 		}, {
+			key: 'logout',
+			value: function logout() {
+				this.props.logout();
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var currentUser = this.props.account.user;
@@ -39665,9 +39682,18 @@
 					'div',
 					null,
 					currentUser == null ? _react2.default.createElement(_view.Register, { onRegister: this.register.bind(this), onLogin: this.login.bind(this) }) : _react2.default.createElement(
-						'h2',
+						'div',
 						null,
-						currentUser.username
+						_react2.default.createElement(
+							'h2',
+							null,
+							currentUser.username
+						),
+						_react2.default.createElement(
+							'button',
+							{ className: 'button special small', onClick: this.logout.bind(this) },
+							'Log Out'
+						)
 					)
 				);
 			}
@@ -39692,6 +39718,9 @@
 			},
 			checkCurrentUser: function checkCurrentUser() {
 				return dispatch(_actions2.default.checkCurrentUser());
+			},
+			logout: function logout() {
+				return dispatch(_actions2.default.logout());
 			}
 		};
 	};
