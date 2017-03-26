@@ -34930,7 +34930,7 @@
 			value: function render() {
 				var _this2 = this;
 	
-				var mapContainer = _react2.default.createElement('div', { style: { minHeight: 800, height: '100%', width: '100%' } });
+				var mapContainer = _react2.default.createElement('div', { style: { minHeight: 1300, height: '100%', width: '100%' } });
 	
 				return _react2.default.createElement(_reactGoogleMaps.GoogleMapLoader, {
 					containerElement: mapContainer,
